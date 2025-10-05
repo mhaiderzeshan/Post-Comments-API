@@ -23,7 +23,8 @@ def get_comments_by_post(db: Session, post_id: int):
 
 
 def delete_comment(db: Session, id: int):
-    comment = db.query(models.Comment).filter(models.Comment.comment_id == id).first()
+    comment = db.query(models.Comment).filter(
+        models.Comment.comment_id == id).first()
 
     if not comment:
         return None
@@ -31,4 +32,3 @@ def delete_comment(db: Session, id: int):
     db.delete(comment)
     db.commit()
     return comment
-
